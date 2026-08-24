@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carteira Viva | Ranking mensal de dividendos direto no Telegram</title>
+<meta name="description" content="Carteira Viva: ranking mensal de ações e FIIs pagadores de dividendos, entregue direto no seu Telegram. 7 dias de garantia. A partir de R$42,80/mês.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Carteira Viva">
+<meta property="og:title" content="Carteira Viva | Sua carteira de dividendos, no Telegram">
+<meta property="og:description" content="Ranking mensal de ações e FIIs pagadores de dividendos, sugestão de alocação e alertas — tudo numa conversa normal no Telegram. 7 dias de garantia.">
+<meta property="og:image" content="https://carteiravivabot.com/og-image.png">
+<meta property="og:url" content="https://carteiravivabot.com/">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Carteira Viva | Sua carteira de dividendos, no Telegram">
+<meta name="twitter:description" content="Ranking mensal de ações e FIIs pagadores de dividendos, sugestão de alocação e alertas — direto no Telegram. 7 dias de garantia.">
+<meta name="twitter:image" content="https://carteiravivabot.com/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="assets/img/logo.png">
+<style>
+  :root{
+    --mint:#2ee6a6;
+    --coral:#ff6f61;
+    --bg:#0b1210;
+    --card:#11201a;
+    --texto:#eafaf3;
+    --texto-suave:#a9c4b8;
+    --borda:#1f3a2e;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:'Plus Jakarta Sans',-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--texto);
+    line-height:1.6;
+    background-color:var(--bg);
+    background-image:linear-gradient(180deg, rgba(11,18,16,0.55), rgba(11,18,16,0.75) 40%, rgba(11,18,16,0.88)), url(assets/img/bg-pattern.jpg);
+    background-size:cover;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+  }
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  a{color:inherit;text-decoration:none;}
+
+  header{
+    padding:20px 0;
+    border-bottom:1px solid var(--borda);
+    position:sticky;top:0;background:rgba(11,18,16,0.94);backdrop-filter:blur(6px);z-index:10;
+  }
+  header .container{display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:700;font-size:18px;}
+  .logo img{width:32px;height:32px;border-radius:8px;}
+  .nav-cta{background:var(--mint);color:#04231a;font-weight:700;padding:10px 20px;border-radius:8px;font-size:14px;}
+
+  .eyebrow{
+    display:inline-block;color:var(--mint);font-size:13px;font-weight:700;letter-spacing:1px;
+    text-transform:uppercase;margin-bottom:18px;
+  }
+
+  .hero{padding:60px 0 40px;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:start;}
+  h1{font-size:42px;line-height:1.12;font-weight:800;margin-bottom:20px;letter-spacing:-0.6px;}
+  h1 span{color:var(--mint);}
+  .hero p.lead{font-size:18px;color:var(--texto-suave);margin-bottom:30px;max-width:520px;}
+  .cta-group{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:16px;}
+  .btn{display:inline-block;padding:16px 28px;border-radius:10px;font-weight:700;font-size:16px;transition:transform .15s ease;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:var(--mint);color:#04231a;}
+  .btn-secondary{background:transparent;color:var(--texto);border:1px solid var(--borda);}
+  .hero-note{font-size:13px;color:var(--texto-suave);}
+
+  .phone-frame{
+    background:linear-gradient(160deg,#12291f,#0b1210);
+    border:1px solid var(--borda);border-radius:24px;padding:14px;
+    box-shadow:0 30px 60px -20px rgba(0,0,0,0.6);
+    max-width:340px;margin-left:auto;
+  }
+  .phone-frame img{width:100%;height:auto;border-radius:16px;display:block;}
+
+  .trust-strip{background:var(--card);border-top:1px solid var(--borda);border-bottom:1px solid var(--borda);padding:22px 0;}
+  .trust-strip .container{display:flex;flex-wrap:wrap;gap:28px;justify-content:center;}
+  .trust-item{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--texto-suave);}
+  .trust-item strong{color:var(--texto);}
+
+  section{padding:64px 0;}
+  .section-title{font-size:30px;font-weight:800;margin-bottom:12px;text-align:center;letter-spacing:-0.4px;}
+  .section-sub{color:var(--texto-suave);text-align:center;max-width:600px;margin:0 auto 48px;font-size:16px;}
+
+  .feature-row{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:64px;
+  }
+  .feature-row:last-child{margin-bottom:0;}
+  .feature-row.reverse .feature-text{order:2;}
+  .feature-row.reverse .feature-shot{order:1;}
+  .feature-shot{
+    background:linear-gradient(160deg,#12291f,#0b1210);border:1px solid var(--borda);border-radius:20px;
+    padding:12px;text-align:center;
+  }
+  .feature-shot img{width:100%;height:auto;max-width:280px;border-radius:12px;}
+  .feature-tag{
+    display:inline-block;background:rgba(46,230,166,0.12);color:var(--mint);font-size:12px;font-weight:700;
+    padding:5px 12px;border-radius:999px;margin-bottom:14px;border:1px solid rgba(46,230,166,0.3);
+  }
+  .feature-text h3{font-size:24px;font-weight:800;margin-bottom:12px;letter-spacing:-0.3px;}
+  .feature-text p{color:var(--texto-suave);font-size:15px;}
+
+  .como-funciona{background:var(--card);border-radius:20px;padding:40px;border:1px solid var(--borda);}
+  .passos{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;}
+  .passos-5{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}
+  .passo{text-align:center;}
+  .passo p{font-size:13px;}
+  .passo .num{
+    width:40px;height:40px;border-radius:50%;background:var(--mint);color:#04231a;
+    display:flex;align-items:center;justify-content:center;font-weight:800;margin:0 auto 14px;
+  }
+  .passo h4{font-size:15px;margin-bottom:6px;}
+  .passo p{font-size:13px;color:var(--texto-suave);}
+
+  .pricing{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:820px;margin:0 auto;}
+  .price-card{background:var(--card);border:1px solid var(--borda);border-radius:18px;padding:32px;position:relative;}
+  .price-card.destaque{border-color:var(--mint);box-shadow:0 0 0 1px var(--mint);}
+  .price-tag{
+    position:absolute;top:-13px;right:24px;background:var(--coral);color:#fff;font-size:12px;font-weight:700;
+    padding:5px 12px;border-radius:999px;
+  }
+  .price-card h3{font-size:15px;color:var(--texto-suave);font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px;}
+  .price-value{font-size:38px;font-weight:800;margin-bottom:4px;}
+  .price-value small{font-size:15px;font-weight:500;color:var(--texto-suave);}
+  .price-desc{font-size:13px;color:var(--texto-suave);margin-bottom:22px;}
+  .price-card ul{list-style:none;margin-bottom:26px;}
+  .price-card li{font-size:14px;color:var(--texto-suave);padding:6px 0;padding-left:22px;position:relative;}
+  .price-card li:before{content:"✓";position:absolute;left:0;color:var(--mint);font-weight:700;}
+  .price-card .btn{width:100%;text-align:center;}
+
+  .garantia{
+    background:linear-gradient(120deg,rgba(46,230,166,0.1),rgba(46,230,166,0.02));
+    border:1px solid rgba(46,230,166,0.35);border-radius:20px;padding:44px;text-align:center;
+  }
+  .garantia .icon{font-size:40px;margin-bottom:12px;}
+  .garantia h2{font-size:28px;margin-bottom:10px;font-weight:800;}
+  .garantia p{color:var(--texto-suave);max-width:520px;margin:0 auto;}
+
+  .faq-item{border-bottom:1px solid var(--borda);padding:20px 0;}
+  .faq-item h4{font-size:16px;margin-bottom:8px;font-weight:700;}
+  .faq-item p{color:var(--texto-suave);font-size:14px;}
+
+  .disclaimer{background:var(--card);border:1px solid var(--borda);border-radius:14px;padding:24px;font-size:13px;color:var(--texto-suave);}
+
+  .final-cta{text-align:center;padding:64px 0;}
+  .final-cta h2{font-size:30px;margin-bottom:14px;font-weight:800;}
+  .final-cta p{color:var(--texto-suave);margin-bottom:28px;}
+
+  footer{border-top:1px solid var(--borda);padding:32px 0 90px;text-align:center;font-size:13px;color:var(--texto-suave);}
+  footer a{color:var(--mint);}
+
+  .icon-inline{width:18px;height:18px;display:inline-block;vertical-align:-4px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .icon-mint{color:var(--mint);}
+  .icon-dark{color:#3a2604;}
+  .icon-lg{width:38px;height:38px;vertical-align:-10px;stroke-width:1.4;}
+  .icon-star{width:15px;height:15px;display:inline-block;fill:#ffc94d;stroke:none;vertical-align:-2px;}
+
+  .comandos{display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:center;}
+  .comandos-shot{background:linear-gradient(160deg,#12291f,#0b1210);border:1px solid var(--borda);border-radius:20px;padding:12px;text-align:center;}
+  .comandos-shot img{width:100%;height:auto;max-width:260px;border-radius:12px;}
+  .cmd-group{margin-bottom:20px;}
+  .cmd-group:last-child{margin-bottom:0;}
+  .cmd-group h4{font-size:13px;text-transform:uppercase;letter-spacing:0.5px;color:var(--mint);margin-bottom:8px;}
+  .cmd-item{display:flex;gap:10px;font-size:14px;color:var(--texto-suave);padding:4px 0;}
+  .cmd-item code{color:var(--texto);font-weight:700;white-space:nowrap;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;}
+  @media(max-width:820px){.comandos{grid-template-columns:1fr;} .comandos-shot{order:-1;max-width:260px;margin:0 auto;}}
+
+  .testimonials-grid{column-count:3;column-gap:20px;}
+  .t-card{break-inside:avoid;background:var(--card);border:1px solid var(--borda);border-radius:16px;padding:24px;margin-bottom:20px;}
+  .t-head{display:flex;align-items:center;margin-bottom:14px;}
+  .t-avatar{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:#04231a;margin-right:10px;flex-shrink:0;}
+  .t-avatar-a{background:var(--mint);}
+  .t-avatar-b{background:var(--coral);}
+  .t-avatar-c{background:#ffcf5c;}
+  .t-name{font-weight:700;font-size:14px;}
+  .t-role{font-size:12px;color:var(--texto-suave);}
+  .t-stars{margin-bottom:10px;}
+  .t-quote{font-size:19px;font-weight:700;color:var(--texto);line-height:1.35;}
+  @media(max-width:820px){.testimonials-grid{column-count:1;}}
+
+  .countdown-bar{background:linear-gradient(90deg,#e0a92e,#f3cd6b);color:#3a2604;padding:12px 0;text-align:center;font-size:14px;font-weight:700;}
+  .countdown-bar .container{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;}
+  .countdown-bar .clock{background:rgba(4,4,4,0.16);padding:4px 10px;border-radius:6px;font-variant-numeric:tabular-nums;}
+
+  .founder{display:grid;grid-template-columns:220px 1fr;gap:40px;align-items:center;background:var(--card);border:1px solid var(--borda);border-radius:20px;padding:40px;}
+  .founder-photo{width:200px;height:200px;border-radius:50%;object-fit:cover;border:3px solid var(--mint);background:#0e1a15;display:flex;align-items:center;justify-content:center;color:var(--texto-suave);font-size:13px;text-align:center;overflow:hidden;}
+  .founder-text h2{font-size:26px;font-weight:800;margin-bottom:14px;letter-spacing:-0.3px;}
+  .founder-text p{color:var(--texto-suave);font-size:15px;margin-bottom:12px;}
+  .founder-text p:last-child{margin-bottom:0;}
+  .founder-sign{color:var(--texto);font-weight:700;margin-top:16px;font-size:14px;}
+  .founder-sign span{display:block;color:var(--texto-suave);font-weight:400;font-size:13px;margin-top:2px;}
+
+  .compare-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--borda);border-radius:16px;overflow:hidden;}
+  .compare-table th,.compare-table td{padding:16px 18px;text-align:center;border-bottom:1px solid var(--borda);font-size:14px;}
+  .compare-table th{background:rgba(46,230,166,0.06);font-size:13px;text-transform:uppercase;letter-spacing:0.4px;color:var(--texto-suave);}
+  .compare-table td:first-child,.compare-table th:first-child{text-align:left;color:var(--texto);font-weight:600;}
+  .compare-table tr:last-child td{border-bottom:none;}
+  .compare-table td.yes{color:var(--mint);font-weight:700;}
+  .compare-table td.no{color:var(--texto-suave);}
+  .compare-table .col-destaque{background:rgba(46,230,166,0.08);}
+  .compare-table-wrap{overflow-x:auto;}
+
+  .float-contact{
+    position:fixed;right:20px;bottom:20px;background:var(--card);border:1px solid var(--mint);color:var(--texto);
+    padding:12px 18px;border-radius:999px;font-size:13px;font-weight:700;box-shadow:0 10px 30px -10px rgba(0,0,0,0.6);
+    display:flex;align-items:center;gap:8px;z-index:20;
+  }
+
+  .sticky-cta{display:none;}
+
+  @media(max-width:820px){
+    .hero-grid{grid-template-columns:1fr;}
+    .phone-frame{order:-1;max-width:280px;margin:0 auto;}
+    h1{font-size:30px;}
+    .feature-row, .feature-row.reverse{grid-template-columns:1fr;}
+    .feature-row.reverse .feature-text{order:1;}
+    .founder{grid-template-columns:1fr;text-align:center;padding:28px;}
+    .founder-photo{margin:0 auto;}
+    .compare-table{font-size:12px;}
+    .compare-table th,.compare-table td{padding:10px 8px;}
+    .float-contact{right:12px;bottom:78px;padding:10px 14px;font-size:12px;}
+    .sticky-cta{
+      display:flex;position:fixed;bottom:0;left:0;right:0;background:var(--bg);border-top:1px solid var(--borda);
+      padding:12px 16px;z-index:19;box-shadow:0 -10px 30px -10px rgba(0,0,0,0.6);
+    }
+    .sticky-cta a{flex:1;text-align:center;}
+    .feature-row.reverse .feature-shot{order:2;}
+    .passos{grid-template-columns:1fr;}
+    .pricing{grid-template-columns:1fr;}
+    .trust-strip .container{justify-content:center;text-align:center;}
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1592132542414239');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1592132542414239&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="ic-shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 4.6-3 8.4-7 10-4-1.6-7-5.4-7-10V6l7-3z"/><path d="M9 12l2 2 4-4"/></symbol>
+  <symbol id="ic-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4V5z"/><path d="M8 9h8M8 12.5h5"/></symbol>
+  <symbol id="ic-chart" viewBox="0 0 24 24"><path d="M4 20V10M11 20V4M18 20v-7"/></symbol>
+  <symbol id="ic-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="ic-flame" viewBox="0 0 24 24"><path d="M12 2c1 3-3 4-3 8a3 3 0 0 0 6 0c0-1-1-2-1-2 2 1 3 3 3 5a5 5 0 0 1-10 0c0-5 4-6 5-11z"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></symbol>
+  <symbol id="ic-star" viewBox="0 0 24 24"><path d="M12 2l2.9 6.1 6.6.7-4.9 4.5 1.3 6.6L12 16.8 6.1 19.9l1.3-6.6L2.5 8.8l6.6-.7z"/></symbol>
+</svg>
+
+<div class="countdown-bar" id="countdown-bar">
+  <div class="container">
+    <span><svg class="icon-inline icon-dark"><use href="#ic-flame"/></svg> Cupom de lançamento — <span id="cupom-codigo">LANCAMENTO30</span> — termina em</span>
+    <span class="clock" id="countdown-clock">carregando…</span>
+  </div>
+</div>
+
+<header>
+  <div class="container">
+    <div class="logo"><img src="assets/img/logo.png" width="128" height="128" decoding="async" alt="Carteira Viva"> Carteira Viva</div>
+    <a href="#planos" class="nav-cta">Ver planos</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Ranking mensal de dividendos</span>
+      <h1>Chega de gerenciar sua carteira <span>sozinho.</span></h1>
+      <p class="lead">Carteira Viva cruza yield sustentável, histórico de pagamento e saúde financeira das empresas — e te diz onde alocar, direto no Telegram, em uma conversa normal.</p>
+      <div class="cta-group">
+        <a href="https://pay.hotmart.com/D106746603J?off=u0g14793&src=meta_lancamento" class="btn btn-primary">Começar agora — 7 dias grátis</a>
+        <a href="#planos" class="btn btn-secondary">Ver planos e preços</a>
+      </div>
+      <p class="hero-note">Cancele quando quiser dentro dos 7 dias de teste, sem burocracia.</p>
+    </div>
+    <div class="phone-frame">
+      <img src="assets/img/shot-hero.jpg" width="600" height="1299" decoding="async" fetchpriority="high" alt="Print real do Carteira Viva no Telegram mostrando o ranking de oportunidades do mês">
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="container">
+    <div class="trust-item"><svg class="icon-inline icon-mint"><use href="#ic-shield"/></svg> <strong>7 dias</strong> de garantia total</div>
+    <div class="trust-item"><svg class="icon-inline icon-mint"><use href="#ic-chat"/></svg> <strong>Conversa real</strong>, não recomendação genérica</div>
+    <div class="trust-item"><svg class="icon-inline icon-mint"><use href="#ic-chart"/></svg> <strong>Dados reais</strong> de mercado</div>
+    <div class="trust-item"><svg class="icon-inline icon-mint"><use href="#ic-lock"/></svg> <strong>Compra segura</strong> pela Hotmart</div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Sua carteira de verdade, não uma carteira genérica</h2>
+    <p class="section-sub">A maioria das assinaturas de recomendação entrega a mesma lista pronta pra todo mundo. O Carteira Viva conversa com a SUA carteira — você fala quanto tem disponível, ele responde.</p>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <span class="feature-tag">Sugestão de alocação</span>
+        <h3>Você diz quanto tem, ele monta a divisão</h3>
+        <p>Manda "tenho R$500 pra investir hoje" e o Carteira Viva olha sua carteira atual, identifica os setores que faltam e sugere onde alocar — com cotas, preço e score de cada ativo, sem enrolação.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/img/shot-r500.jpg" width="560" height="1212" loading="lazy" decoding="async" alt="Print real: sugestão de alocação para R$500 disponíveis">
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-text">
+        <span class="feature-tag">Ranking do mês</span>
+        <h3>Top oportunidades, atualizadas com dados reais</h3>
+        <p>Todo mês, um ranking cruzando yield, histórico de pagamento e saúde financeira — com alerta quando o yield está alto demais pra ser confortável (sinal de risco, não de oportunidade escondida).</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/img/shot-ranking.jpg" width="560" height="1212" loading="lazy" decoding="async" alt="Print real: top 3 oportunidades do mês">
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <span class="feature-tag">Diversificação setorial</span>
+        <h3>Aviso antes de você concentrar demais</h3>
+        <p>O Carteira Viva acompanha o peso de cada setor na sua carteira e avisa quando algo passa de 30% — e ainda sugere ativos específicos pra preencher os setores que estão faltando.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/img/shot-diversificacao.jpg" width="560" height="1212" loading="lazy" decoding="async" alt="Print real: diversificação setorial da carteira">
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-text">
+        <span class="feature-tag">Próximos proventos</span>
+        <h3>Saiba o que vem antes de precisar perguntar</h3>
+        <p>Proventos já anunciados e estimativas baseadas no histórico — sempre marcadas como estimativa, nunca como garantia, pra você decidir com informação real.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/img/shot-proventos.jpg" width="560" height="1212" loading="lazy" decoding="async" alt="Print real: próximos proventos anunciados e estimados">
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-text">
+        <span class="feature-tag">Organização automática</span>
+        <h3>Sua carteira sempre visível, sem planilha</h3>
+        <p>Preço médio, valorização e dividendos recebidos por ativo, atualizados automaticamente. Você só manda "comprei X cotas de Y" e o resto o bot organiza.</p>
+      </div>
+      <div class="feature-shot">
+        <img src="assets/img/shot-organizacao.jpg" width="560" height="1212" loading="lazy" decoding="async" alt="Print real: organização da carteira com preço médio e valorização">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">O que quem já usa diz</h2>
+    <p class="section-sub">Feedback real de assinantes.</p>
+    <div class="testimonials-grid">
+      <div class="t-card">
+        <div class="t-head">
+          <div class="t-avatar t-avatar-a">M</div>
+          <div><div class="t-name">Marcos A.</div><div class="t-role">Assinante</div></div>
+        </div>
+        <div class="t-stars"><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg></div>
+        <p class="t-quote">Eu investia meio no escuro, sinceramente. Aportava e seguia, sem saber direito pra onde aquilo ia. Um dia perguntei pro bot quanto eu precisava juntar pra viver só de dividendo... e aquele número me caiu a ficha na hora. Virou minha meta. Hoje me esforço mais porque sei exatamente o que tô perseguindo.</p>
+      </div>
+      <div class="t-card">
+        <div class="t-head">
+          <div class="t-avatar t-avatar-b">J</div>
+          <div><div class="t-name">Juliana C.</div><div class="t-role">Assinante</div></div>
+        </div>
+        <div class="t-stars"><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg></div>
+        <p class="t-quote">"Eu perdia o domingo inteiro pesquisando o que comprar. Hoje eu só falo quanto tenho... e já era, resolvido."</p>
+      </div>
+      <div class="t-card">
+        <div class="t-head">
+          <div class="t-avatar t-avatar-c">B</div>
+          <div><div class="t-name">Bruno T.</div><div class="t-role">Assinante</div></div>
+        </div>
+        <div class="t-stars"><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg></div>
+        <p class="t-quote">Acordo, pego o celular ainda meio zoado de sono, e já tá lá: quanto cai de provento hoje, de qual ativo. Nem entro mais na corretora só pra ver isso, sério.</p>
+      </div>
+      <div class="t-card">
+        <div class="t-head">
+          <div class="t-avatar t-avatar-b">C</div>
+          <div><div class="t-name">Camila R.</div><div class="t-role">Assinante</div></div>
+        </div>
+        <div class="t-stars"><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg></div>
+        <p class="t-quote"><strong>Antes:</strong> três abas abertas, print de FII que o pessoal manda no grupo, e eu sem saber se aquilo prestava.<br><strong>Depois:</strong> pergunto uma vez, já vem pensado pra minha carteira. Não é dica pra todo mundo.</p>
+      </div>
+      <div class="t-card">
+        <div class="t-head">
+          <div class="t-avatar t-avatar-a">A</div>
+          <div><div class="t-name">André S.</div><div class="t-role">Assinante</div></div>
+        </div>
+        <div class="t-stars"><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg><svg class="icon-star"><use href="#ic-star"/></svg></div>
+        <p class="t-quote">Ficou chato de tão fácil, viu, no bom sentido. Eu só falo o valor e ele resolve o resto pra mim.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="como-funciona">
+      <h2 class="section-title" style="margin-bottom:0;">Como funciona, passo a passo</h2>
+      <p class="section-sub">Sem enrolação: é isso que acontece do pagamento até você conversar com o bot pela primeira vez.</p>
+      <div class="passos passos-5">
+        <div class="passo">
+          <div class="num">1</div>
+          <h4>Você assina no Hotmart</h4>
+          <p>Cartão, Pix ou boleto — o pagamento é processado direto pela Hotmart, com segurança.</p>
+        </div>
+        <div class="passo">
+          <div class="num">2</div>
+          <h4>Chega um e-mail com o link de ativação</h4>
+          <p>Em poucos minutos você recebe um e-mail de contato@carteiravivabot.com com um link exclusivo pra vincular sua assinatura ao Telegram. Não achou? Confere a caixa de spam/promoções antes de qualquer coisa.</p>
+        </div>
+        <div class="passo">
+          <div class="num">3</div>
+          <h4>Clica no link e o Telegram abre sozinho</h4>
+          <p>O link já leva direto pro chat do Carteira Viva no Telegram. A ativação acontece na hora — o bot confirma e te manda o resumo dos comandos disponíveis, ali mesmo.</p>
+        </div>
+        <div class="passo">
+          <div class="num">4</div>
+          <h4>Você conta sua situação</h4>
+          <p>Fala quanto tem disponível ou o que já tem investido — em texto normal, sem formulário nem planilha.</p>
+        </div>
+        <div class="passo">
+          <div class="num">5</div>
+          <h4>Recebe o ranking e os alertas todo mês</h4>
+          <p>Direto no mesmo chat, sem baixar app novo. Se travar em algum passo, é só usar o botão de contato no canto da tela.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container comandos">
+    <div class="comandos-shot">
+      <img src="assets/img/shot-comandos.jpg" width="520" height="1125" loading="lazy" decoding="async" alt="Print real do manual de comandos do Carteira Viva no Telegram">
+    </div>
+    <div>
+      <h2 class="section-title" style="text-align:left;">Tudo que o bot faz, sem precisar decorar nada</h2>
+      <p class="section-sub" style="text-align:left;margin:0 0 20px;">Esse é o manual completo, com todos os comandos organizados por tema — carteira, relatórios, alertas, imposto de renda e mais.</p>
+      <div class="cmd-group">
+        <div class="cmd-item">Digite <code>/ajuda</code> a qualquer momento dentro do bot que esse manual aparece de novo, na hora.</div>
+        <div class="cmd-item">Não precisa decorar nada: também dá pra simplesmente escrever em português normal — "quanto tenho investido?", "o que comprar com R$300?" — que o assistente entende.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Por que não continuar sozinho?</h2>
+    <p class="section-sub">Dá pra fazer manual. A pergunta é quanto tempo isso toma e se você confia no resultado.</p>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <tr>
+          <th>&nbsp;</th>
+          <th>Planilha manual</th>
+          <th>Grupo de dicas genérico</th>
+          <th class="col-destaque">Carteira Viva</th>
+        </tr>
+        <tr>
+          <td>Considera a SUA carteira</td>
+          <td class="no">Só se você mantiver atualizada</td>
+          <td class="no">Não, é a mesma dica pra todo mundo</td>
+          <td class="yes">Sim</td>
+        </tr>
+        <tr>
+          <td>Tempo pra montar/manter</td>
+          <td class="no">Horas por mês</td>
+          <td class="no">Zero, mas você filtra sozinho</td>
+          <td class="yes">Nenhum — você só conversa</td>
+        </tr>
+        <tr>
+          <td>Alerta de concentração setorial</td>
+          <td class="no">Se você souber calcular</td>
+          <td class="no">Não existe</td>
+          <td class="yes">Automático</td>
+        </tr>
+        <tr>
+          <td>Aviso de yield alto suspeito</td>
+          <td class="no">Não</td>
+          <td class="no">Raramente</td>
+          <td class="yes">Sim, sempre</td>
+        </tr>
+        <tr>
+          <td>Onde funciona</td>
+          <td class="no">Excel/Sheets</td>
+          <td class="no">Grupo de WhatsApp/Telegram</td>
+          <td class="yes">Telegram, no seu ritmo</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="container">
+    <h2 class="section-title">Planos</h2>
+    <p class="section-sub">Todos os planos incluem 7 dias de teste grátis. Cancele quando quiser dentro do prazo, sem burocracia.</p>
+    <div class="pricing">
+      <div class="price-card">
+        <h3>Mensal</h3>
+        <div class="price-value">R$ 42,80 <small>/mês</small></div>
+        <p class="price-desc">Renovação mensal, cancele quando quiser.</p>
+        <ul>
+          <li>Ranking mensal completo</li>
+          <li>Alertas e comparação com o mercado</li>
+          <li>Imposto de Renda automático</li>
+        </ul>
+        <a href="https://pay.hotmart.com/D106746603J?off=u0g14793&src=meta_lancamento" class="btn btn-secondary">Assinar mensal</a>
+      </div>
+      <div class="price-card destaque">
+        <span class="price-tag">Economize ~20%</span>
+        <h3>Anual</h3>
+        <div class="price-value">R$ 410,88 <small>/ano</small></div>
+        <p class="price-desc">Equivale a R$ 34,24/mês — pague uma vez, use o ano todo.</p>
+        <ul>
+          <li>Tudo do plano mensal</li>
+          <li>Preço travado por 12 meses</li>
+          <li>Menos fricção de renovação</li>
+        </ul>
+        <a href="https://pay.hotmart.com/D106746603J?off=2spvu91k&src=meta_lancamento" class="btn btn-primary">Assinar anual</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="garantia">
+      <div class="icon"><svg class="icon-inline icon-mint icon-lg"><use href="#ic-shield"/></svg></div>
+      <h2>7 dias de garantia total</h2>
+      <p>Teste o Carteira Viva por 7 dias. Se não fizer sentido pra você, cancela sem burocracia e sem precisar justificar — o valor é devolvido integralmente, dentro do prazo.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="founder">
+      <div class="founder-photo" id="founder-photo"><img src="assets/img/founder.jpg" width="400" height="400" loading="lazy" decoding="async" alt="Nycollas Moriel, criador do Carteira Viva" style="width:100%;height:100%;object-fit:cover;"></div>
+      <div class="founder-text">
+        <h2>Por trás do Carteira Viva</h2>
+        <p>Não foi planejado, viu. Eu só queria parar de perder tempo com planilha.</p>
+        <p>Toda semana era a mesma coisa: uma aba pra cotação, outra pra tentar ver se eu tava concentrado demais num setor só, mais uma pra lembrar quando caía o próximo dividendo. Cansei. Comecei a montar o Carteira Viva só pra resolver isso <em>pra mim mesmo</em>.</p>
+        <p>Fui mexendo, testando, brigando com o bot até ele responder do jeito que eu explicaria pra um amigo. Passei a usar todo dia. Daí minha família pediu pra usar também. Depois alguns amigos. Cada um chegava com uma pergunta que eu nunca tinha pensado, e o bot foi ficando mais completo com isso — literalmente aprendendo com gente de verdade usando de verdade.</p>
+        <p>Foi só depois de um tempo que percebi que fazia sentido pra mais gente, não só pra quem já me conhecia. Aí resolvi abrir.</p>
+        <p>Continua sendo a mesma ferramenta que eu uso na minha carteira, todo santo dia — só que agora com mais gente usando, apontando furo e me ajudando a deixar melhor.</p>
+        <div class="founder-sign">Nycollas Moriel<span>Criador do Carteira Viva</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div class="faq-item">
+      <h4>O Carteira Viva é consultoria de investimentos?</h4>
+      <p>Não. É conteúdo educacional e informativo, baseado em dados públicos de mercado. Não é consultoria de valores mobiliários individualizada nem promessa de rentabilidade — investir envolve risco, e a decisão final é sempre sua.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Como funciona a garantia de 7 dias?</h4>
+      <p>Você tem 7 dias corridos a partir da assinatura para testar. Se cancelar dentro desse prazo, o valor é devolvido integralmente.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Preciso baixar algum aplicativo?</h4>
+      <p>Não. Tudo é entregue direto no seu Telegram, sem app novo e sem planilha.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Posso cancelar quando quiser?</h4>
+      <p>Sim, a qualquer momento, diretamente pela sua área de compras na Hotmart.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Funciona com qualquer corretora? Vocês mexem no meu dinheiro?</h4>
+      <p>Sim, funciona com qualquer corretora — e não, a gente nunca mexe no seu dinheiro. Você só informa o que já tem ou pretende comprar, em texto normal. O Carteira Viva não tem acesso à sua conta em nenhuma corretora, não movimenta ordens e não custodia nada. As compras continuam sendo feitas por você, onde você já investe.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Preciso entender de investimentos pra usar?</h4>
+      <p>Não. O Carteira Viva foi pensado pra quem está começando também — você conversa em linguagem normal ("tenho R$300 pra investir", "o que eu comprei mês passado?") e ele traduz os dados de mercado pra você. Quanto mais você usa, mais entende, mas não é pré-requisito.</p>
+    </div>
+    <div class="faq-item">
+      <h4>Quem é o responsável pelo conteúdo?</h4>
+      <p>O Carteira Viva é produzido por Nycollas Moriel, produtor Hotmart há 7 anos.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="disclaimer">
+      <strong>Aviso importante:</strong> o Carteira Viva é conteúdo educacional e informativo, baseado em dados públicos de mercado. Não constitui recomendação individualizada de investimento nem promessa de rentabilidade. Investir envolve risco, incluindo a possibilidade de perda do capital investido, e a decisão final é sempre do usuário.
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container">
+    <h2>Pronto pra ver seu dinheiro trabalhar por você?</h2>
+    <p>Ative agora e receba seu primeiro ranking de oportunidades ainda este mês.</p>
+    <a href="https://pay.hotmart.com/D106746603J?off=u0g14793&src=meta_lancamento" class="btn btn-primary">Quero minha Carteira Viva</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>Carteira Viva — compra processada com segurança pela <a href="https://www.hotmart.com" target="_blank" rel="noopener">Hotmart</a>.</p>
+    <p style="margin-top:10px;"><a href="termos-de-uso.html">Termos de Uso</a> &nbsp;·&nbsp; <a href="politica-de-privacidade.html">Política de Privacidade</a></p>
+    <p style="margin-top:6px;">© 2026 Carteira Viva. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<a class="float-contact" href="mailto:contato@carteiravivabot.com"><svg class="icon-inline icon-mint"><use href="#ic-mail"/></svg> Tirar dúvida antes de assinar</a>
+
+<div class="sticky-cta">
+  <a href="https://pay.hotmart.com/D106746603J?off=u0g14793&src=meta_lancamento" class="btn btn-primary">Começar agora — 7 dias grátis</a>
+</div>
+
+<script>
+(function(){
+  var deadline = new Date("2026-09-08T23:59:59-03:00").getTime();
+  var clockEl = document.getElementById("countdown-clock");
+  var barEl = document.getElementById("countdown-bar");
+  function tick(){
+    var now = new Date().getTime();
+    var diff = deadline - now;
+    if (diff <= 0){
+      barEl.style.display = "none";
+      return;
+    }
+    var d = Math.floor(diff / (1000*60*60*24));
+    var h = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    var m = Math.floor((diff % (1000*60*60)) / (1000*60));
+    var s = Math.floor((diff % (1000*60)) / 1000);
+    clockEl.textContent = d + "d " + String(h).padStart(2,"0") + "h " + String(m).padStart(2,"0") + "m " + String(s).padStart(2,"0") + "s";
+  }
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
+
+
+<script>
+(function(){
+  if (typeof fbq === 'undefined') return;
+  document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      fbq('track', 'InitiateCheckout');
+    });
+  });
+})();
+</script>
+</body>
+</html>
