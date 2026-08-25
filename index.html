@@ -663,17 +663,5 @@ src="https://www.facebook.com/tr?id=1592132542414239&ev=PageView&noscript=1"
   setInterval(tick, 1000);
 })();
 </script>
-
-
-<script>
-(function(){
-  if (typeof fbq === 'undefined') return;
-  document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(function(el){
-    el.addEventListener('click', function(){
-      fbq('track', 'InitiateCheckout');
-    });
-  });
-})();
-</script>
 </body>
 </html>
